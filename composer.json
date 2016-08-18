@@ -1,0 +1,11 @@
+{
+    "require": {
+        "twbs/bootstrap": "^3.3"
+    },
+    "autoload": {
+		"psr-4": {
+			"APC\\": "vendor/",
+			"APP\\": "app/"
+		}
+	}
+}
