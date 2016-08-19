@@ -1,12 +1,16 @@
 <?php
-require "APP/clientesDB.php";
+require "APP/model/clientesDB.php";
+require "APP/model/clientesDBjuridico.php";
+require "APP/helpers/common.php";
 
 $getOrdem = filter_input(INPUT_GET, 'ordem', FILTER_DEFAULT);
 
 if($getOrdem == true):
 	krsort($cliente);
+	krsort($clienteJ);
 else:
 	ksort($cliente);
+	ksort($clienteJ);
 endif;
 
 ?>
@@ -52,34 +56,92 @@ endif;
 
 		  <!-- Tabela -->
 		  <div class="panel-body">
-		  	<table class="table table-condensed table-bordered table-responsive"  style="text-align: center">
-	            <thead>
-	                <tr>
-	                    <th class="text-center"><a href="/?ordem=true">Índice:</a></th>
-	                    <th class="text-center">Nome:</th>
-	                    <th class="text-center">E-mail:</th>
-	                    <th class="text-center">Fone:</th>
-	                    <th class="text-center">Ações</th>
-	                </tr>
-	            </thead>
-	            <tbody>
-	            	<?php
-	            		if(isset($cliente)):
-		                	foreach ($cliente as $k => $v):
-			                	echo "
-			                			<tr>
-			                				<td><a href='/visualizar.php?id={$k}'>{$k}</a></td>
-			                				<td><a href='/visualizar.php?id={$k}'>{$v->nome}</a></td>
-			                				<td>{$v->email}</td>
-			                				<td>{$v->fone}</td>
-			                				<td>{$v->cpf}</td>
-			                			</tr>
-			                		 ";
-							endforeach;                	
-	            		endif;
-	            	?>
-	            </tbody>
-	        </table>
+
+		  	<div>
+
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+			    	<li role="presentation" class="active"><a href="#pf" aria-controls="pf" role="tab" data-toggle="tab">Pessoa Física</a></li>
+			    	<li role="presentation"><a href="#pj" aria-controls="pj" role="tab" data-toggle="tab">Pessoa Jurídica</a></li>
+				</ul>
+
+		  		<!-- Tab panes -->
+				<div class="tab-content">
+			    	<div role="tabpanel" class="tab-pane active" id="pf">
+
+			    		<table class="table table-condensed table-bordered table-responsive"  style="text-align: center">
+				            <thead>
+				                <tr>
+				                    <th class="text-center"><a href="/?ordem=true">Índice:</a></th>
+				                    <th class="text-center">Nome:</th>
+				                    <th class="text-center">E-mail:</th>
+				                    <th class="text-center">Fone:</th>
+				                    <th class="text-center">Ações</th>
+				                </tr>
+				            </thead>
+				            <tbody>
+				            	<?php
+				            		if(isset($cliente)):
+
+					                	foreach ($cliente as $k => $v):
+						                	echo "
+						                			<tr>
+						                				<td><a href='/visualizar.php?id={$k}&cliente=pf'>{$k}</a></td>
+						                				<td><a href='/visualizar.php?id={$k}&cliente=pf'>{$v->setNome}</a></td>
+						                				<td>{$v->setEmail}</td>
+						                				<td>". common::sFone($v->setFone) ."</td>
+						                				<td> 
+						                					<a href='/visualizar.php?id={$k}&cliente=pf'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></a> </td>
+						                			</tr>
+						                		 ";
+										endforeach;
+										                	
+				            		endif;
+				            	?>
+				            </tbody>
+				        </table>
+
+			    	</div>
+			    	<div role="tabpanel" class="tab-pane" id="pj">
+
+			    		<table class="table table-condensed table-bordered table-responsive"  style="text-align: center">
+				            <thead>
+				                <tr>
+				                    <th class="text-center"><a href="/?ordem=true">Índice:</a></th>
+				                    <th class="text-center">Nome:</th>
+				                    <th class="text-center">E-mail:</th>
+				                    <th class="text-center">Fone:</th>
+				                    <th class="text-center">Ações</th>
+				                </tr>
+				            </thead>
+				            <tbody>
+				            	<?php
+				            		if(isset($clienteJ)):
+
+					                	foreach ($clienteJ as $k => $v):
+						                	echo "
+						                			<tr>
+						                				<td><a href='/visualizar.php?id={$k}&cliente=pj'>{$k}</a></td>
+						                				<td><a href='/visualizar.php?id={$k}&cliente=pj'>{$v->setNome}</a></td>
+						                				<td>{$v->setEmail}</td>
+						                				<td>". common::sFone($v->setFone) ."</td>
+						                				<td> 
+						                					<a href='/visualizar.php?id={$k}&cliente=pj'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></a> </td>
+						                			</tr>
+						                		 ";
+										endforeach;
+										                	
+				            		endif;
+				            	?>
+				            </tbody>
+				        </table>
+
+			    	</div>
+				</div>
+
+			</div>
+
+		  	
 		  </div>
 
 		</div>

@@ -1,7 +1,15 @@
 <?php
-require "APP/clientesDB.php";
+require_once "APP/model/clientesDB.php";
+require_once "APP/model/clientesDBjuridico.php";
+
+require_once "APP/clientes.class.php";
+require_once "APP/pessoaFisica.class.php";
+require_once "APP/pessoaJuridica.class.php";
+
+require_once "APP/helpers/common.php";
 
 $getId = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
+$getCliente = filter_input(INPUT_GET, 'cliente', FILTER_DEFAULT);
 
 ?>
 
@@ -39,18 +47,39 @@ $getId = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
 	<div class="container">
 		<div class="panel panel-default">
 
-		  <div class="panel-heading"><h4>Cliente: <b><?= $cliente[$getId]->nome ?></b></></h4></div>
+		  <?php if ($getCliente == "pf"): ?>
+
+		  <div class="panel-heading"><h4>Cliente: <b><?= $cliente[$getId]->setNome ?></b></></h4></div>
 		  <div class="panel-body">
-		  	<p><b>Índice:</b> <?= $getId ?></p>
-		  	<p><b>Nome:</b> <?= $cliente[$getId]->nome ?></p>
-		  	<p><b>Sexo:</b> <?= $cliente[$getId]->sexo ?></p>
-		  	<p><b>E-mail:</b> <?= $cliente[$getId]->email ?></p>
-		  	<p><b>Fone:</b> <?= $cliente[$getId]->fone ?></p>
-		  	<p><b>CPF:</b> <?= $cliente[$getId]->cpf ?></p>
-		  	<p><b>Endereço:</b> <?= $cliente[$getId]->endereco ?></p>
-		  	<p><b>Cidade:</b> <?= $cliente[$getId]->cidade ?></p>
-		  	<p><b>Estado:</b> <?= $cliente[$getId]->estado ?></p>
-		  </div>
+		  	<p><b>Nome:</b> <?= $cliente[$getId]->setNome ?></p>
+		  	<p><b>Sexo:</b> <?= $cliente[$getId]->setSexo ?></p>
+		  	<p><b>E-mail:</b> <?= $cliente[$getId]->setEmail ?></p>
+		  	<p><b>Fone:</b> <?= common::sFone($cliente[$getId]->setFone) ?></p>
+		  	<p><b>CPF:</b> <?= common::sCPF($cliente[$getId]->setCpf) ?></p>
+		  	<p><b>Endereço:</b> <?= $cliente[$getId]->setEndereco ?></p>
+		  	<p><b>Cidade:</b> <?= $cliente[$getId]->setCidade ?></p>
+		  	<p><b>Estado:</b> <?= $cliente[$getId]->setEstado ?></p>
+		  	<p><b>Grau de Importância:</b> <?= $cliente[$getId]->setGrau ?></p>
+		  
+
+		  <?php elseif ($getCliente == "pj"): ?>
+
+		  <div class="panel-heading"><h4>Cliente: <b><?= $clienteJ[$getId]->setNome ?></b></></h4></div>
+		  <div class="panel-body">
+		  	<p><b>Nome:</b> <?= $clienteJ[$getId]->setNome ?></p>
+		  	<p><b>Sexo:</b> <?= $clienteJ[$getId]->setInscricaoEstadual ?></p>
+		  	<p><b>E-mail:</b> <?= $clienteJ[$getId]->setEmail ?></p>
+		  	<p><b>Fone:</b> <?= common::sFone($clienteJ[$getId]->setFone) ?></p>
+		  	<p><b>CPF:</b> <?= common::sCNPJ($clienteJ[$getId]->setCnpj) ?></p>
+		  	<p><b>Endereço:</b> <?= $clienteJ[$getId]->setEndereco ?></p>
+		  	<p><b>Cidade:</b> <?= $clienteJ[$getId]->setCidade ?></p>
+		  	<p><b>Estado:</b> <?= $clienteJ[$getId]->setEstado ?></p>
+		  	<p><b>Grau de Importância:</b> <?= $clienteJ[$getId]->setGrau ?></p>
+		  
+
+		  <?php endif; ?>
+
+		  <a class="btn btn-info" href="/">Voltar</a>
 		  </div>
 
 		</div>
