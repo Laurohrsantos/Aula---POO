@@ -1,6 +1,6 @@
 <?php
 
-require "/../pessoaFisica.class.php";
+use APP\types\pessoaFisica;
 
 $cliente[0] = new pessoaFisica();
 $cliente[0]->setNome = "Wesley";

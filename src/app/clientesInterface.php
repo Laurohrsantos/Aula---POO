@@ -1,6 +1,8 @@
 <?php
 
-interface importancia
+namespace APP;
+
+interface clientesInterface
 {
 
 	public function setGrau ($grau);

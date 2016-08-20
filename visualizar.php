@@ -1,12 +1,7 @@
 <?php
-require_once "APP/model/clientesDB.php";
-require_once "APP/model/clientesDBjuridico.php";
-
-require_once "APP/clientes.class.php";
-require_once "APP/pessoaFisica.class.php";
-require_once "APP/pessoaJuridica.class.php";
-
-require_once "APP/helpers/common.php";
+require "config/config.inc.php";
+require "src/app/model/clientesDB.php";
+require "src/app/model/clientesDBjuridico.php";
 
 $getId = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
 $getCliente = filter_input(INPUT_GET, 'cliente', FILTER_DEFAULT);
@@ -54,8 +49,8 @@ $getCliente = filter_input(INPUT_GET, 'cliente', FILTER_DEFAULT);
 		  	<p><b>Nome:</b> <?= $cliente[$getId]->setNome ?></p>
 		  	<p><b>Sexo:</b> <?= $cliente[$getId]->setSexo ?></p>
 		  	<p><b>E-mail:</b> <?= $cliente[$getId]->setEmail ?></p>
-		  	<p><b>Fone:</b> <?= common::sFone($cliente[$getId]->setFone) ?></p>
-		  	<p><b>CPF:</b> <?= common::sCPF($cliente[$getId]->setCpf) ?></p>
+		  	<p><b>Fone:</b> <?= APP\helpers\common::sFone($cliente[$getId]->setFone) ?></p>
+		  	<p><b>CPF:</b> <?= APP\helpers\common::sCPF($cliente[$getId]->setCpf) ?></p>
 		  	<p><b>Endereço:</b> <?= $cliente[$getId]->setEndereco ?></p>
 		  	<p><b>Cidade:</b> <?= $cliente[$getId]->setCidade ?></p>
 		  	<p><b>Estado:</b> <?= $cliente[$getId]->setEstado ?></p>
@@ -69,8 +64,8 @@ $getCliente = filter_input(INPUT_GET, 'cliente', FILTER_DEFAULT);
 		  	<p><b>Nome:</b> <?= $clienteJ[$getId]->setNome ?></p>
 		  	<p><b>Sexo:</b> <?= $clienteJ[$getId]->setInscricaoEstadual ?></p>
 		  	<p><b>E-mail:</b> <?= $clienteJ[$getId]->setEmail ?></p>
-		  	<p><b>Fone:</b> <?= common::sFone($clienteJ[$getId]->setFone) ?></p>
-		  	<p><b>CPF:</b> <?= common::sCNPJ($clienteJ[$getId]->setCnpj) ?></p>
+		  	<p><b>Fone:</b> <?= APP\helpers\common::sFone($clienteJ[$getId]->setFone) ?></p>
+		  	<p><b>CPF:</b> <?= APP\helpers\common::sCNPJ($clienteJ[$getId]->setCnpj) ?></p>
 		  	<p><b>Endereço:</b> <?= $clienteJ[$getId]->setEndereco ?></p>
 		  	<p><b>Cidade:</b> <?= $clienteJ[$getId]->setCidade ?></p>
 		  	<p><b>Estado:</b> <?= $clienteJ[$getId]->setEstado ?></p>

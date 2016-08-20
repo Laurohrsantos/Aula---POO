@@ -1,16 +1,16 @@
 <?php
-require "APP/model/clientesDB.php";
-require "APP/model/clientesDBjuridico.php";
-require "APP/helpers/common.php";
+require "config/config.inc.php";
+require "src/app/model/clientesDB.php";
+require "src/app/model/clientesDBjuridico.php";
 
 $getOrdem = filter_input(INPUT_GET, 'ordem', FILTER_DEFAULT);
 
-if($getOrdem == true):
+if(isset($getOrdem) & $getOrdem == true):
 	krsort($cliente);
 	krsort($clienteJ);
 else:
-	ksort($cliente);
-	ksort($clienteJ);
+	//ksort($cliente);
+	//ksort($clienteJ);
 endif;
 
 ?>
@@ -23,6 +23,9 @@ endif;
 	<title>Página Cliente</title>
 
 	<link rel="stylesheet" type="text/css" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+
+
+
 </head>
 <body>
 
@@ -89,7 +92,7 @@ endif;
 						                				<td><a href='/visualizar.php?id={$k}&cliente=pf'>{$k}</a></td>
 						                				<td><a href='/visualizar.php?id={$k}&cliente=pf'>{$v->setNome}</a></td>
 						                				<td>{$v->setEmail}</td>
-						                				<td>". common::sFone($v->setFone) ."</td>
+						                				<td>". APP\helpers\common::sFone($v->setFone) ."</td>
 						                				<td> 
 						                					<a href='/visualizar.php?id={$k}&cliente=pf'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></a> </td>
 						                			</tr>
@@ -124,7 +127,7 @@ endif;
 						                				<td><a href='/visualizar.php?id={$k}&cliente=pj'>{$k}</a></td>
 						                				<td><a href='/visualizar.php?id={$k}&cliente=pj'>{$v->setNome}</a></td>
 						                				<td>{$v->setEmail}</td>
-						                				<td>". common::sFone($v->setFone) ."</td>
+						                				<td>". APP\helpers\common::sFone($v->setFone) ."</td>
 						                				<td> 
 						                					<a href='/visualizar.php?id={$k}&cliente=pj'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></a> </td>
 						                			</tr>
@@ -148,7 +151,8 @@ endif;
 	</div>
 
 </body>
-	
+
 	<script type="text/javascript" src="vendor/twbs/bootstrap/js/tests/vendor/jquery.min.js"></script>
 	<script type="text/javascript" src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+
 </html>

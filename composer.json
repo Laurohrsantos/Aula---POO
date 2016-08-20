@@ -5,7 +5,7 @@
     "autoload": {
 		"psr-4": {
 			"APC\\": "vendor/",
-			"APP\\": "app/"
+			"APP\\": "src/app/"
 		}
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 
-require "/../pessoaJuridica.class.php";
+use APP\types\pessoaJuridica;
 
 $clienteJ[0] = new pessoaJuridica();
 $clienteJ[0]->setNome = "Fábrica de Doces";

@@ -1,8 +1,9 @@
 <?php
 
+namespace APP\helpers;
+
 class Common 
 {
-
 
     /*
      * Funcao para limitar o numero de caracteres

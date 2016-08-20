@@ -1,9 +1,11 @@
 <?php
 
-require_once "clientes.class.php";
-require_once "clientesInterface.php";
+namespace APP\types;
 
-class pessoaJuridica extends cliente implements importancia
+use \APP\cliente;
+use \APP\clientesInterface;
+
+class pessoaJuridica extends cliente implements clientesInterface
 {
 
 	private $inscricaoEstadual;
