@@ -44,32 +44,32 @@ $getCliente = filter_input(INPUT_GET, 'cliente', FILTER_DEFAULT);
 
 		  <?php if ($getCliente == "pf"): ?>
 
-		  <div class="panel-heading"><h4>Cliente: <b><?= $cliente[$getId]->setNome ?></b></></h4></div>
+		  <div class="panel-heading"><h4>Cliente: <b><?= $cliente[$getId]->getNome() ?></b></></h4></div>
 		  <div class="panel-body">
-		  	<p><b>Nome:</b> <?= $cliente[$getId]->setNome ?></p>
-		  	<p><b>Sexo:</b> <?= $cliente[$getId]->setSexo ?></p>
-		  	<p><b>E-mail:</b> <?= $cliente[$getId]->setEmail ?></p>
-		  	<p><b>Fone:</b> <?= APP\helpers\common::sFone($cliente[$getId]->setFone) ?></p>
-		  	<p><b>CPF:</b> <?= APP\helpers\common::sCPF($cliente[$getId]->setCpf) ?></p>
-		  	<p><b>Endereço:</b> <?= $cliente[$getId]->setEndereco ?></p>
-		  	<p><b>Cidade:</b> <?= $cliente[$getId]->setCidade ?></p>
-		  	<p><b>Estado:</b> <?= $cliente[$getId]->setEstado ?></p>
-		  	<p><b>Grau de Importância:</b> <?= $cliente[$getId]->setGrau ?></p>
+		  	<p><b>Nome:</b> <?= $cliente[$getId]->getNome() ?></p>
+		  	<p><b>Sexo:</b> <?= $cliente[$getId]->getSexo() ?></p>
+		  	<p><b>E-mail:</b> <?= $cliente[$getId]->getEmail() ?></p>
+		  	<p><b>Fone:</b> <?= APP\helpers\common::sFone($cliente[$getId]->getFone()) ?></p>
+		  	<p><b>CPF:</b> <?= APP\helpers\common::sCPF($cliente[$getId]->getCpf()) ?></p>
+		  	<p><b>Endereço:</b> <?= $cliente[$getId]->getEndereco() ?></p>
+		  	<p><b>Cidade:</b> <?= $cliente[$getId]->getCidade() ?></p>
+		  	<p><b>Estado:</b> <?= $cliente[$getId]->getEstado() ?></p>
+		  	<p><b>Grau de Importância:</b> <?= $cliente[$getId]->getGrau() ?></p>
 		  
 
 		  <?php elseif ($getCliente == "pj"): ?>
 
-		  <div class="panel-heading"><h4>Cliente: <b><?= $clienteJ[$getId]->setNome ?></b></></h4></div>
+		  <div class="panel-heading"><h4>Cliente: <b><?= $clienteJ[$getId]->getNome() ?></b></></h4></div>
 		  <div class="panel-body">
-		  	<p><b>Nome:</b> <?= $clienteJ[$getId]->setNome ?></p>
-		  	<p><b>Sexo:</b> <?= $clienteJ[$getId]->setInscricaoEstadual ?></p>
-		  	<p><b>E-mail:</b> <?= $clienteJ[$getId]->setEmail ?></p>
-		  	<p><b>Fone:</b> <?= APP\helpers\common::sFone($clienteJ[$getId]->setFone) ?></p>
-		  	<p><b>CPF:</b> <?= APP\helpers\common::sCNPJ($clienteJ[$getId]->setCnpj) ?></p>
-		  	<p><b>Endereço:</b> <?= $clienteJ[$getId]->setEndereco ?></p>
-		  	<p><b>Cidade:</b> <?= $clienteJ[$getId]->setCidade ?></p>
-		  	<p><b>Estado:</b> <?= $clienteJ[$getId]->setEstado ?></p>
-		  	<p><b>Grau de Importância:</b> <?= $clienteJ[$getId]->setGrau ?></p>
+		  	<p><b>Nome:</b> <?= $clienteJ[$getId]->getNome() ?></p>
+		  	<p><b>Sexo:</b> <?= $clienteJ[$getId]->getInscricaoEstadual() ?></p>
+		  	<p><b>E-mail:</b> <?= $clienteJ[$getId]->getEmail() ?></p>
+		  	<p><b>Fone:</b> <?= APP\helpers\common::sFone($clienteJ[$getId]->getFone()) ?></p>
+		  	<p><b>CPF:</b> <?= APP\helpers\common::sCNPJ($clienteJ[$getId]->getCnpj()) ?></p>
+		  	<p><b>Endereço:</b> <?= $clienteJ[$getId]->getEndereco() ?></p>
+		  	<p><b>Cidade:</b> <?= $clienteJ[$getId]->getCidade() ?></p>
+		  	<p><b>Estado:</b> <?= $clienteJ[$getId]->getEstado() ?></p>
+		  	<p><b>Grau de Importância:</b> <?= $clienteJ[$getId]->getGrau() ?></p>
 		  
 
 		  <?php endif; ?>

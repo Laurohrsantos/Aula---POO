@@ -90,9 +90,9 @@ endif;
 						                	echo "
 						                			<tr>
 						                				<td><a href='/visualizar.php?id={$k}&cliente=pf'>{$k}</a></td>
-						                				<td><a href='/visualizar.php?id={$k}&cliente=pf'>{$v->setNome}</a></td>
-						                				<td>{$v->setEmail}</td>
-						                				<td>". APP\helpers\common::sFone($v->setFone) ."</td>
+						                				<td><a href='/visualizar.php?id={$k}&cliente=pf'>". $v->getNome() ."</a></td>
+						                				<td>". $v->getEmail() ."</td>
+						                				<td>". APP\helpers\common::sFone($v->getFone()) ."</td>
 						                				<td> 
 						                					<a href='/visualizar.php?id={$k}&cliente=pf'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></a> </td>
 						                			</tr>
@@ -125,9 +125,9 @@ endif;
 						                	echo "
 						                			<tr>
 						                				<td><a href='/visualizar.php?id={$k}&cliente=pj'>{$k}</a></td>
-						                				<td><a href='/visualizar.php?id={$k}&cliente=pj'>{$v->setNome}</a></td>
-						                				<td>{$v->setEmail}</td>
-						                				<td>". APP\helpers\common::sFone($v->setFone) ."</td>
+						                				<td><a href='/visualizar.php?id={$k}&cliente=pj'>". $v->getNome() ."</a></td>
+						                				<td>". $v->getEmail() ."</td>
+						                				<td>". APP\helpers\common::sFone($v->getFone()) ."</td>
 						                				<td> 
 						                					<a href='/visualizar.php?id={$k}&cliente=pj'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></a> </td>
 						                			</tr>
