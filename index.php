@@ -1,7 +1,10 @@
 <?php
+
+use APP\model\clientesModel;
+use APP\model\clientesModelJuridico;
+
 require "config/config.inc.php";
-require "src/app/model/clientesDB.php";
-require "src/app/model/clientesDBjuridico.php";
+
 
 $getOrdem = filter_input(INPUT_GET, 'ordem', FILTER_DEFAULT);
 
@@ -12,6 +15,12 @@ else:
 	//ksort($cliente);
 	//ksort($clienteJ);
 endif;
+
+$ler = new clientesModel();
+$ler->getAll();
+
+$ler2 = new ClientesModelJuridico();
+$ler->getAll();
 
 ?>
 
@@ -84,17 +93,17 @@ endif;
 				            </thead>
 				            <tbody>
 				            	<?php
-				            		if(isset($cliente)):
+				            		if($ler->getAll()):
 
-					                	foreach ($cliente as $k => $v):
+					                	foreach ($ler->getAll() as $k => $v):
 						                	echo "
 						                			<tr>
-						                				<td><a href='/visualizar.php?id={$k}&cliente=pf'>{$k}</a></td>
-						                				<td><a href='/visualizar.php?id={$k}&cliente=pf'>". $v->getNome() ."</a></td>
-						                				<td>". $v->getEmail() ."</td>
-						                				<td>". APP\helpers\common::sFone($v->getFone()) ."</td>
+						                				<td><a href='/visualizar.php?id=". $v['id'] ."&cliente=pf'>". $v['id'] ."</a></td>
+						                				<td><a href='/visualizar.php?id=". $v['id'] ."&cliente=pf'>". $v['nome'] ."</a></td>
+						                				<td>". $v['email'] ."</td>
+						                				<td>". APP\helpers\common::sFone($v['fone']) ."</td>
 						                				<td> 
-						                					<a href='/visualizar.php?id={$k}&cliente=pf'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></a> </td>
+						                					<a href='/visualizar.php?id=". $v['id'] ."&cliente=pf'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></a> </td>
 						                			</tr>
 						                		 ";
 										endforeach;
@@ -119,17 +128,17 @@ endif;
 				            </thead>
 				            <tbody>
 				            	<?php
-				            		if(isset($clienteJ)):
+				            		if($ler2->getAll()):
 
-					                	foreach ($clienteJ as $k => $v):
+					                	foreach ($ler2->getAll() as $k => $v):
 						                	echo "
 						                			<tr>
-						                				<td><a href='/visualizar.php?id={$k}&cliente=pj'>{$k}</a></td>
-						                				<td><a href='/visualizar.php?id={$k}&cliente=pj'>". $v->getNome() ."</a></td>
-						                				<td>". $v->getEmail() ."</td>
-						                				<td>". APP\helpers\common::sFone($v->getFone()) ."</td>
+						                				<td><a href='/visualizar.php?id=". $v['id'] ."&cliente=pj'>". $v['id'] ."</a></td>
+						                				<td><a href='/visualizar.php?id=". $v['id'] ."&cliente=pj'>". $v['nome'] ."</a></td>
+						                				<td>". $v['email'] ."</td>
+						                				<td>". APP\helpers\common::sFone($v['fone']) ."</td>
 						                				<td> 
-						                					<a href='/visualizar.php?id={$k}&cliente=pj'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></a> </td>
+						                					<a href='/visualizar.php?id=". $v['id'] ."&cliente=pj'><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span></a> </td>
 						                			</tr>
 						                		 ";
 										endforeach;

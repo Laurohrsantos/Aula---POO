@@ -1,7 +1,10 @@
 <?php
+
+use APP\model\clientesModel;
+use APP\model\clientesModelJuridico;
+
 require "config/config.inc.php";
-require "src/app/model/clientesDB.php";
-require "src/app/model/clientesDBjuridico.php";
+
 
 $getId = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
 $getCliente = filter_input(INPUT_GET, 'cliente', FILTER_DEFAULT);
@@ -42,34 +45,45 @@ $getCliente = filter_input(INPUT_GET, 'cliente', FILTER_DEFAULT);
 	<div class="container">
 		<div class="panel panel-default">
 
-		  <?php if ($getCliente == "pf"): ?>
+		  <?php 
 
-		  <div class="panel-heading"><h4>Cliente: <b><?= $cliente[$getId]->getNome() ?></b></></h4></div>
+		  if ($getCliente == "pf"):
+
+		  	$ler = new clientesModel();
+			$ler->find($getId);
+
+		  ?>
+
+		  <div class="panel-heading"><h4>Cliente: <b><?= $ler->find($getId)['nome'] ?></b></></h4></div>
 		  <div class="panel-body">
-		  	<p><b>Nome:</b> <?= $cliente[$getId]->getNome() ?></p>
-		  	<p><b>Sexo:</b> <?= $cliente[$getId]->getSexo() ?></p>
-		  	<p><b>E-mail:</b> <?= $cliente[$getId]->getEmail() ?></p>
-		  	<p><b>Fone:</b> <?= APP\helpers\common::sFone($cliente[$getId]->getFone()) ?></p>
-		  	<p><b>CPF:</b> <?= APP\helpers\common::sCPF($cliente[$getId]->getCpf()) ?></p>
-		  	<p><b>Endereço:</b> <?= $cliente[$getId]->getEndereco() ?></p>
-		  	<p><b>Cidade:</b> <?= $cliente[$getId]->getCidade() ?></p>
-		  	<p><b>Estado:</b> <?= $cliente[$getId]->getEstado() ?></p>
-		  	<p><b>Grau de Importância:</b> <?= $cliente[$getId]->getGrau() ?></p>
+		  	<p><b>Nome:</b> <?= $ler->find($getId)['nome'] ?></p>
+		  	<p><b>Sexo:</b> <?= $ler->find($getId)['sexo'] ?></p>
+		  	<p><b>E-mail:</b> <?= $ler->find($getId)['email'] ?></p>
+		  	<p><b>Fone:</b> <?= APP\helpers\common::sFone($ler->find($getId)['fone']) ?></p>
+		  	<p><b>CPF:</b> <?= APP\helpers\common::sCPF($ler->find($getId)['cpf']) ?></p>
+		  	<p><b>Endereço:</b> <?= $ler->find($getId)['endereco'] ?></p>
+		  	<p><b>Cidade:</b> <?= $ler->find($getId)['cidade'] ?></p>
+		  	<p><b>Estado:</b> <?= $ler->find($getId)['estado'] ?></p>
+		  	<p><b>Grau de Importância:</b> <?= $ler->find($getId)['grau'] ?></p>
 		  
 
-		  <?php elseif ($getCliente == "pj"): ?>
+		  <?php elseif ($getCliente == "pj"):
 
-		  <div class="panel-heading"><h4>Cliente: <b><?= $clienteJ[$getId]->getNome() ?></b></></h4></div>
+		  	$ler = new clientesModelJuridico();
+			$ler->find($getId);
+		  ?>
+
+		  <div class="panel-heading"><h4>Cliente: <b><?=  $ler->find($getId)['nome'] ?></b></></h4></div>
 		  <div class="panel-body">
-		  	<p><b>Nome:</b> <?= $clienteJ[$getId]->getNome() ?></p>
-		  	<p><b>Sexo:</b> <?= $clienteJ[$getId]->getInscricaoEstadual() ?></p>
-		  	<p><b>E-mail:</b> <?= $clienteJ[$getId]->getEmail() ?></p>
-		  	<p><b>Fone:</b> <?= APP\helpers\common::sFone($clienteJ[$getId]->getFone()) ?></p>
-		  	<p><b>CPF:</b> <?= APP\helpers\common::sCNPJ($clienteJ[$getId]->getCnpj()) ?></p>
-		  	<p><b>Endereço:</b> <?= $clienteJ[$getId]->getEndereco() ?></p>
-		  	<p><b>Cidade:</b> <?= $clienteJ[$getId]->getCidade() ?></p>
-		  	<p><b>Estado:</b> <?= $clienteJ[$getId]->getEstado() ?></p>
-		  	<p><b>Grau de Importância:</b> <?= $clienteJ[$getId]->getGrau() ?></p>
+		  	<p><b>Nome:</b> <?=  $ler->find($getId)['nome'] ?></p>
+		  	<p><b>Sexo:</b> <?=  $ler->find($getId)['inscricaoestadual'] ?></p>
+		  	<p><b>E-mail:</b> <?=  $ler->find($getId)['email'] ?></p>
+		  	<p><b>Fone:</b> <?= APP\helpers\common::sFone( $ler->find($getId)['fone']) ?></p>
+		  	<p><b>CPF:</b> <?= APP\helpers\common::sCNPJ( $ler->find($getId)['cnpj']) ?></p>
+		  	<p><b>Endereço:</b> <?=  $ler->find($getId)['endereco'] ?></p>
+		  	<p><b>Cidade:</b> <?=  $ler->find($getId)['cidade'] ?></p>
+		  	<p><b>Estado:</b> <?=  $ler->find($getId)['estado'] ?></p>
+		  	<p><b>Grau de Importância:</b> <?=  $ler->find($getId)['grau'] ?></p>
 		  
 
 		  <?php endif; ?>

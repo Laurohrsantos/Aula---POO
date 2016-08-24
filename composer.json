@@ -5,7 +5,8 @@
     "autoload": {
 		"psr-4": {
 			"APC\\": "vendor/",
-			"APP\\": "src/app/"
+			"APP\\": "src/app/",
+			"Conn\\": "Conn/"
 		}
 	}
 }
